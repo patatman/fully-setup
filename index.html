@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #3d4537;
+            color: #7D8D71;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            margin: 0;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 90px;
+            margin-bottom: 20px;
+            color: azure;
+        }
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: azure;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #7D8D71;
+            color: #fcfffa;
+            border: none;
+            margin: 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #6C7C61;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>ID: <span id="deviceId">Loading...</span></h1>
+    <h2>device naam: <span id="deviceName">Loading...</span></h2>
+
+    <!-- Input field for custom name
+    <div>
+        <label for="customName">Nieuwe alias:</label>
+        <input type="text" id="customName" name="customName">
+        <button onclick="setCustomName()">Mooie naam</button>
+    </div> -->
+
+    <script>
+        function displayDeviceId() {
+            // Assuming fully.getDeviceId() is available and synchronous
+            var deviceId = fully.getDeviceId(); // Call the function to get the device ID
+            document.getElementById('deviceId').innerText = deviceId; // Display the device ID
+        }
+        function displayDeviceName() {
+            // Assuming fully.getDeviceId() is available and synchronous
+            var deviceName = fully.getDeviceName(); // Call the function to get the device ID
+            document.getElementById('deviceName').innerText = deviceName; // Display the device ID
+        }
+
+        function setCustomName() {
+            // Retrieve the value from the input field
+            var name = document.getElementById('customName').value;
+
+            // Use the value with fully.Alias(String name) function
+            void fully.setStringSetting(deviceName, name);
+        }
+
+        // Display the device ID when the page loads
+        displayDeviceId();
+        displayDeviceName();
+    </script>
+</body>
+
+
+
+</html>
